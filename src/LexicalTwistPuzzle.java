@@ -1,42 +1,41 @@
 import java.util.Scanner;
 
 /**
- * Prints characters based on vowel-consonant distribution rules.
+ * LexicalTwistPuzzle
+ *
+ * Entry point of the application.
+ * Handles user input and delegates logic to other classes.
+ *
+ * Demonstrates:
+ * - Abstraction
+ * - Clean architecture
  */
-import java.util.LinkedHashSet;
 public class LexicalTwistPuzzle {
-    // Preserve order and uniqueness
-    LinkedHashSet<Character> unique = new LinkedHashSet<>();
 
-for (char ch : combined.toCharArray()) {
-        unique.add(ch);
-    }
+    public static void main(String[] args) {
 
-    int count = 0;
+        Scanner scanner = new Scanner(System.in);
+        WordValidator validator = new WordValidator();
+        LexicalAnalyzer analyzer = new LexicalAnalyzer();
 
-if (vowels > consonants) {
+        // Collect inputs
+        System.out.print("Enter first word: ");
+        String first = scanner.nextLine();
 
-        for (char ch : unique) {
-            if ("AEIOU".indexOf(ch) != -1) {
-                System.out.print(ch);
-                count++;
-            }
-            if (count == 2) break;
+        System.out.print("Enter second word: ");
+        String second = scanner.nextLine();
+
+        // Validate inputs
+        if (!validator.isValid(first) || !validator.isValid(second)) {
+            System.out.println("Invalid word entered.");
+            return;
         }
 
-    } else if (consonants > vowels) {
-
-        for (char ch : unique) {
-            if ("AEIOU".indexOf(ch) == -1 && Character.isLetter(ch)) {
-                System.out.print(ch);
-                count++;
-            }
-            if (count == 2) break;
+        // Process logic
+        if (analyzer.isReverse(first, second)) {
+            System.out.println(analyzer.transform(first));
+        } else {
+            analyzer.analyze(first, second);
         }
-
-    } else {
-        System.out.println("Vowels and consonants are equal");
-    }
-
     }
 }
