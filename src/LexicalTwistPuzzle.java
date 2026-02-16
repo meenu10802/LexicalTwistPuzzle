@@ -3,14 +3,14 @@ import java.util.Scanner;
 /**
  * LexicalTwistPuzzle
  *
- * This version validates that each input contains only one word.
- * If whitespace is detected, the program terminates safely.
+ * This version checks whether the second word is
+ * the reverse of the first word (case-insensitive).
  *
  * Concepts Used:
- * - String validation
- * - Defensive programming
- * - Early return strategy
+ * - StringBuilder
+ * - equalsIgnoreCase()
  */
+
 public class LexicalTwistPuzzle {
 
     public static void main(String[] args) {
@@ -18,28 +18,16 @@ public class LexicalTwistPuzzle {
         // Create scanner
         Scanner scanner = new Scanner(System.in);
 
-        // Accept first word
-        System.out.print("Enter first word: ");
-        String firstWord = scanner.nextLine();
+        // Reverse first word
+        String reversed = new StringBuilder(firstWord).reverse().toString();
 
-        // Validate first word
-        if (firstWord.contains(" ")) {
-            System.out.println(firstWord + " is an invalid word");
-            return;
+// Check reverse match
+        if (reversed.equalsIgnoreCase(secondWord)) {
+            System.out.println("Words are reverse of each other.");
+        } else {
+            System.out.println("Words are NOT reverse.");
         }
 
-        // Accept second word
-        System.out.print("Enter second word: ");
-        String secondWord = scanner.nextLine();
-
-        // Validate second word
-        if (secondWord.contains(" ")) {
-            System.out.println(secondWord + " is an invalid word");
-            return;
-        }
-
-        // Continue only if valid
-        System.out.println("Valid inputs received.");
 
     }
 }
