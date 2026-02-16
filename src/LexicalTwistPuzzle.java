@@ -1,27 +1,42 @@
 import java.util.Scanner;
 
 /**
- * Applies transformation if reverse match is true.
- * - Convert to lowercase
- * - Replace vowels with '@'
+ * Prints characters based on vowel-consonant distribution rules.
  */
-
+import java.util.LinkedHashSet;
 public class LexicalTwistPuzzle {
+    // Preserve order and uniqueness
+    LinkedHashSet<Character> unique = new LinkedHashSet<>();
 
-    public static void main(String[] args) {
+for (char ch : combined.toCharArray()) {
+        unique.add(ch);
+    }
 
-        if (reversed.equalsIgnoreCase(secondWord)) {
+    int count = 0;
 
-            // Convert to lowercase
-            String lower = reversed.toLowerCase();
+if (vowels > consonants) {
 
-            // Replace vowels
-            String transformed = lower.replaceAll("[aeiou]", "@");
-
-            // Print result
-            System.out.println(transformed);
+        for (char ch : unique) {
+            if ("AEIOU".indexOf(ch) != -1) {
+                System.out.print(ch);
+                count++;
+            }
+            if (count == 2) break;
         }
 
+    } else if (consonants > vowels) {
+
+        for (char ch : unique) {
+            if ("AEIOU".indexOf(ch) == -1 && Character.isLetter(ch)) {
+                System.out.print(ch);
+                count++;
+            }
+            if (count == 2) break;
+        }
+
+    } else {
+        System.out.println("Vowels and consonants are equal");
+    }
 
     }
 }
