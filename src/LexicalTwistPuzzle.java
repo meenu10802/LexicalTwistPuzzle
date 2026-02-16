@@ -1,26 +1,32 @@
 import java.util.Scanner;
 
 /**
- * Applies transformation if reverse match is true.
- * - Convert to lowercase
- * - Replace vowels with '@'
+ * Combines both words and counts vowels and consonants.
  */
 
 public class LexicalTwistPuzzle {
 
     public static void main(String[] args) {
 
-        if (reversed.equalsIgnoreCase(secondWord)) {
+        // Combine words
+        String combined = (firstWord + secondWord).toUpperCase();
 
-            // Convert to lowercase
-            String lower = reversed.toLowerCase();
+        int vowels = 0;
+        int consonants = 0;
 
-            // Replace vowels
-            String transformed = lower.replaceAll("[aeiou]", "@");
+// Count characters
+        for (char ch : combined.toCharArray()) {
 
-            // Print result
-            System.out.println(transformed);
+            if ("AEIOU".indexOf(ch) != -1) {
+                vowels++;
+            } else if (Character.isLetter(ch)) {
+                consonants++;
+            }
         }
+
+        System.out.println("Vowels: " + vowels);
+        System.out.println("Consonants: " + consonants);
+
 
 
     }
