@@ -1,1 +1,1 @@
-Lexical Twist Puzzlegi
+Lexical Twist Puzzle
